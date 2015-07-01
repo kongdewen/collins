@@ -95,7 +95,7 @@ class AssetLogSpec extends mutable.Specification {
     val msg = "Hello World"
     val format = LogFormat.PlainText
     val source = LogSource.Internal
-    val newLog = AssetLog.alert(asset, msg, format, source)
+    val newLog = AssetLog.alert(asset, "tumblr", msg, format, source)
   }
 
   trait concretelog extends Scope {

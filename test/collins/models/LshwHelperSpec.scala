@@ -11,7 +11,7 @@ class LshwHelperSpec extends mutable.Specification {
   "LSHW Helper Specification".title
 
   "The LSHW Helper" should {
-    "Parse and reconstruct data" in new WithApplication {
+    "Parse and reconstruct data" in {
       "containing a 10-gig card" in new LshwCommonHelper("lshw-10g.xml") {
         val lshw = parsed()
         val stub = getStub()
