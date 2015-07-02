@@ -69,7 +69,6 @@ object AssetLifecycle {
       }
       InternalTattler.informational(
         "Initial intake successful, status now %s".format(_status.toString), res._1)
-      Asset.flushCache(res._1)
       Right(res)
     } catch {
       case e: Throwable =>
