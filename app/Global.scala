@@ -28,6 +28,7 @@ import collins.util.config.Registry
 import collins.solr.SolrHelper
 import collins.metrics.MetricsReporter
 import collins.callbacks.Callback
+import collins.events.Events
 
 object Global extends GlobalSettings with AuthenticationAccessor with CryptoAccessor {
   private[this] val logger = Logger.logger
@@ -42,9 +43,10 @@ object Global extends GlobalSettings with AuthenticationAccessor with CryptoAcce
     setAuthentication(AuthenticationProvider.get(AuthenticationProviderConfig.authType))
     setCryptoKey(CryptoConfig.key)
     LoggingHelper.setupLogging(app)
-    SolrHelper.setupSolr()
-    MetricsReporter.setupMetrics()
     Callback.setupCallbacks()
+    SolrHelper.setupSolr()
+    Events.setupAmqp()
+    MetricsReporter.setupMetrics()
   }
   
   override def onStop(app: Application) {

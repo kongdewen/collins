@@ -1,5 +1,7 @@
 package collins
 
+import scala.io.Source
+
 trait ResourceFinder {
   def findResource(filename: String) = {
     import java.io.File
@@ -8,7 +10,7 @@ trait ResourceFinder {
   }
   def getResource(filename: String) = {
     val stream = getClass.getClassLoader.getResourceAsStream(filename)
-    val tmp = io.Source.fromInputStream(stream)
+    val tmp = Source.fromInputStream(stream)
     val str = tmp.mkString
     tmp.close()
     str

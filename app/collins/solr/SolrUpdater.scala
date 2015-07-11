@@ -59,7 +59,7 @@ class AssetSolrUpdater extends Actor {
       if (scheduled.get == true) {
         val assetTags = assetTagsRef.getAndSet(newAssetTagSet).asScala.toSeq
         val indexTime = new Date
-        val assets = assetTags.map(t => Asset.findByTag(t)).flatMap(a => a)
+        val assets = assetTags.flatMap(t => Asset.findByTag(t))
         logger.debug("Got Reindex task, working on %d assets".format(assetTags.size))
         SolrHelper.updateAssets(assets, indexTime)
         scheduled.set(false)

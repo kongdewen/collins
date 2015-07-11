@@ -23,27 +23,41 @@ scalacOptions += "-language:postfixOps"
 scalacOptions += "-language:implicitConversions"
 
 libraryDependencies ++= Seq(
+  // unit testing
   "org.specs2" %% "specs2" % "2.3.13" % "test",
+  // internal caching
   "com.google.guava" % "guava" % "18.0",
+  // connection pool
   "com.jolbox" % "bonecp" % "0.8.0.RELEASE",
   "nl.grons" %% "metrics-scala" % "2.1.5",
   "com.addthis.metrics" % "reporter-config" % "2.3.1",
   "mysql" % "mysql-connector-java" % "5.1.35",
+  // stand alone execution
   "com.h2database" % "h2" % "1.4.187",
+  // embedded and external solr for search
   "org.apache.solr" % "solr-solrj" % "5.2.0",
   "org.apache.solr" % "solr-core"  % "5.2.0",
   "org.apache.httpcomponents" % "httpclient" % "4.5",
   "org.apache.httpcomponents" % "httpmime" % "4.5",
   "commons-net" % "commons-net" % "3.3",
+  // amqp
+  "org.apache.activemq" % "artemis-protocols" % "1.0.0" exclude("org.apache.activemq", "artemis-native"),
+  "org.apache.activemq" % "artemis-amqp-protocol" % "1.0.0" exclude("org.apache.activemq", "artemis-native"),
+  "org.apache.activemq" % "artemis-core-client" % "1.0.0" exclude("org.apache.activemq", "artemis-native"),
+  "org.apache.activemq" % "artemis-server" % "1.0.0" exclude("org.apache.activemq", "artemis-native"),
+  // encryption
   "org.bouncycastle" % "bcprov-jdk16" % "1.46",
   "com.twitter" %% "util-core" % "6.23.0",
   "org.jsoup" % "jsoup" % "1.8.2",
+  // db access
   "org.squeryl" %% "squeryl" % "0.9.5-7",
   "com.gilt" %% "jerkson" % "0.6.6",
   "org.yaml" % "snakeyaml" % "1.15",
+  // play components
   "com.typesafe.play" %% "play-jdbc" % "2.3.9",
   "com.typesafe.play" %% "play-cache" % "2.3.9",
   "com.google.code.findbugs" % "jsr305" % "3.0.0",
+  // js libraries
   "org.webjars" %% "webjars-play" % "2.3.0-3",
   "org.webjars" % "bootstrap" % "3.3.4",
   "org.webjars" % "bootstrap-datepicker" % "1.4.0",

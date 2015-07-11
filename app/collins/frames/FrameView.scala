@@ -29,10 +29,8 @@ object FrameView extends FrameView {
           val activeScript = jsScriptEngine.eval(fc.script)
           val invocable = jsScriptEngine.asInstanceOf[Invocable]
           val enabled = invocable.invokeFunction("isEnabled", assetJson).asInstanceOf[Boolean]
-          //val enabled = jsScriptEngine.eval("isEnabled(" + assetJson + ")").asInstanceOf[Boolean]
           if (enabled) {
             val url = invocable.invokeFunction("getUrl", assetJson).asInstanceOf[String]
-            //val url = jsScriptEngine.eval("getUrl(" + assetJson + ")").asInstanceOf[String]
             logger.info("Evaluating %s named frame on asset %s, obtained url '%s'".format(fc.name, asset.asset.tag, url))
             ViewSpecs(fc.name, fc.title.get, fc.style, true, url)
           } else {
